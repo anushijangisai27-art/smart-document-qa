@@ -14,6 +14,7 @@ if __name__ == "__main__":
     pdf_text = extract_text_from_pdf("sample.pdf")
     chunks = split_into_chunks(pdf_text)
 
-    print(f"Total chunks banaye gaye: {len(chunks)}")
-    print("\nPehla chunk:")
+    
+    print(f"Total chunks created: {len(chunks)}")
+    print("\nfirst chunk:")
     print(chunks[0])

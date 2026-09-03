@@ -23,14 +23,14 @@ if __name__ == "__main__":
     embeddings = create_embeddings(chunks)
 
     index = build_faiss_index(embeddings)
-    print(f"FAISS index bana, isme {index.ntotal} embeddings stored hain")
+    print(f"FAISS index built, {index.ntotal} embeddings stored")
 
     query = "What is machine learning?"
     query_embedding = model.encode([query])[0]
 
     results = search_similar_chunks(query_embedding, index, chunks)
     print(f"\nQuestion: {query}")
-    print("\nSabse relevant chunks mile:")
+    print("\nMost relevant chunks found:")
     for i, r in enumerate(results):
         print(f"\n--- Chunk {i+1} ---")
         print(r)

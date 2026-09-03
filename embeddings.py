@@ -15,6 +15,6 @@ if __name__ == "__main__":
     embeddings = create_embeddings(chunks)
 
     print(f"Total chunks: {len(chunks)}")
-    print(f"Har embedding ka size: {embeddings.shape}")
-    print(f"\nPehle chunk ki embedding (pehle 10 numbers):")
+    print(f"Size of each embedding: {embeddings[0].shape}")
+    print(f"\first chunk  embedding (first 10 numbers):")
     print(embeddings[0][:10])

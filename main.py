@@ -12,8 +12,8 @@ from vector_store import build_faiss_index, search_similar_chunks
 
 def generate_answer(query, context_chunks):
     context = "\n\n".join(context_chunks)
-    prompt = f"""Neeche diye gaye context ke basis pe question ka answer do.
-Agar context me answer nahi hai, to bolo "Iska answer document me nahi mila."
+    prompt = f"""Answer the question based on the context given below.
+If the answer is not in the context, say "The answer was not found in the document."
 
 Context:
 {context}
@@ -33,7 +33,7 @@ def ask_question(query, index, chunks):
     return answer
 
 if __name__ == "__main__":
-    print("PDF padh rahe hain...")
+    print("Reading PDF...")
     pdf_text = extract_text_from_pdf("sample.pdf")
     chunks = split_into_chunks(pdf_text)
     embeddings = create_embeddings(chunks)
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     print(f"Ready! {len(chunks)} chunks indexed.\n")
 
     while True:
-        query = input("Apna sawaal poocho (ya 'exit' likho band karne ke liye): ")
+        query = input("Ask your question (or type 'exit' to quit): ")
         if query.lower() == "exit":
             break
         answer = ask_question(query, index, chunks)
